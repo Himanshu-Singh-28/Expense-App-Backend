@@ -1,5 +1,5 @@
 import express from "express"
-import { allExpence, deleteExpence, newExpence, updateExpence } from "../controller/expencecntt.js";
+import { allExpence, deleteExpence, newExpence, updateExpence } from "../controller/expenceCntt.js";
 import { userAuth } from "../Utils/userAuth.js";
 
 
