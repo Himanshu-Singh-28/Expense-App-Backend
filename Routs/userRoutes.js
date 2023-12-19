@@ -1,5 +1,5 @@
 import express from "express"
-import { myProfil, userLogin, userLongout, userRegister } from "../controller/usercntt.js";
+import { myProfil, userLogin, userLongout, userRegister } from "../controller/userCntt.js";
 import { userAuth } from "../Utils/userAuth.js";
 
 const route=express.Router();
