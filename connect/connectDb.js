@@ -1,0 +1,12 @@
+import mongoose from "mongoose";
+
+export const ConnectDb=()=>{
+    mongoose.connect(process.env.MONGO_URL,{
+        dbName: "TaskBackend",
+    }).then(()=>{
+        console.log("DataBase Connected");
+    }).catch((e)=>{
+        console.log(e);
+    });
+}
+
