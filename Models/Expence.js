@@ -11,12 +11,16 @@ const schema=mongoose.Schema({
     },
     user:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "TaskBackend",
+        ref: "userData",
         required: true,
     },
     createdAT:{
         type: Date,
         default: Date.now
+    },
+    isCompleted:{
+        type: Boolean,
+        default: false
     }
 });
 

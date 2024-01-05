@@ -16,4 +16,4 @@ const schema=mongoose.Schema({
     }
 });
 
-export const User=mongoose.model("user",schema);
+export const User=mongoose.model("userData",schema);
