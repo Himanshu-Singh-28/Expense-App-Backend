@@ -8,11 +8,8 @@ const route=express.Router();
 
 route.post("/newexpence",userAuth,newExpence);
 route.get("/allexpence",userAuth,allExpence);
-route.delete("/:id",userAuth,deleteExpence);
+route.route("/:id").delete(userAuth,deleteExpence).put(userAuth,updateExpence);
 route.put("/done/:id",userAuth,updateExpenceDone);
-route.put("/:id",userAuth,updateExpence);
-
-
 
 
 export {route as expenceRoutes};
