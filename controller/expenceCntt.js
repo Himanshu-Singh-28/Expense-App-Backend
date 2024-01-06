@@ -3,13 +3,12 @@ import {Expence}  from "../Models/Expence.js";
 
 
 export const newExpence= async (req,res)=>{
-    const {title,amount,date}= req.body;
-    const d=new Date(date);
+    let {title,amount,date}= req.body;
     const expence= await Expence.create({
         title,
         amount,
         user: req.user,
-        createdAt:d,
+        createdAT: date,
     });
     res.status(200).json({
         success : true,
@@ -42,7 +41,7 @@ export const deleteExpence=async(req,res)=>{
         message: "expence deleted successfully",
     });
 }
-export const updateExpence=async(req,res)=>{
+export const updateExpenceDone=async(req,res)=>{
     const ExpenceId=req.params.id;
 
     const userExp=await Expence.findById(ExpenceId);
@@ -53,6 +52,30 @@ export const updateExpence=async(req,res)=>{
         });
     }
     userExp.isCompleted=!userExp.isCompleted;
+
+    await userExp.save();
+    return res.json({
+        success: true,
+        message: "expence updated successfully",
+    });
+}
+
+export const updateExpence=async(req,res)=>{
+    const ExpenceId=req.params.id;
+    let {title,amount}=req.body;
+    const userExp=await Expence.findById(ExpenceId);
+    if(!userExp){
+        return res.status(404).json({
+            success: false,
+            message: "no such id",
+        });
+    }
+    if(!amount){
+        userExp.title=title;
+    }else{
+        userExp.title=title;
+        userExp.amount=amount;
+    }
 
     await userExp.save();
     return res.json({
