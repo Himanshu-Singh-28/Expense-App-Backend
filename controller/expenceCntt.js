@@ -51,14 +51,11 @@ export const updateExpence=async(req,res)=>{
             message: "no such id",
         });
     }
-    const {title,amount,date}=req.body;
-    userExp.title=title;
-    userExp.amount=amount;
-    userExp.date=date;
+    userExp.isCompleted=!userExp.isCompleted;
 
     await userExp.save();
     return res.json({
         success: true,
-        message: "expence deleted successfully",
+        message: "expence updated successfully",
     });
 }
