@@ -4,6 +4,7 @@ import { userAuth } from "../Utils/userAuth.js";
 import { allExpence, deleteExpence, newExpence, updateExpence, updateExpenceDone } from "../controller/expencecntt.js";
 
 
+
 const route=express.Router();
 
 route.post("/newexpence",userAuth,newExpence);
