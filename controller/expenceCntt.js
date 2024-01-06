@@ -8,7 +8,7 @@ export const newExpence= async (req,res)=>{
         title,
         amount,
         user: req.user,
-        date,
+        createdAt:date,
     });
     res.status(200).json({
         success : true,
