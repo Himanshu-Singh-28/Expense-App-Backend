@@ -9,6 +9,6 @@ export const sendcookie=(user,res,message,statusCode=200)=>{
         secure: process.env.NODE_ENV==="Development"?false: true,
     }).json({
         success: true,
-        maessage: message,
+        message: message,
     });
 }
