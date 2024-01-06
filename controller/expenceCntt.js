@@ -4,11 +4,12 @@ import {Expence}  from "../Models/Expence.js";
 
 export const newExpence= async (req,res)=>{
     const {title,amount,date}= req.body;
+    const d=new Date(date);
     const expence= await Expence.create({
         title,
         amount,
         user: req.user,
-        createdAt:date,
+        createdAt:d,
     });
     res.status(200).json({
         success : true,
