@@ -60,7 +60,7 @@ export const updateExpenceDone=async(req,res)=>{
     });
 }
 
-export const updateExpence=async(req,res)=>{
+export const updateExpenceData=async(req,res)=>{
     const ExpenceId=req.params.id;
     let {title,amount}=req.body;
     const userExp=await Expence.findById(ExpenceId);
