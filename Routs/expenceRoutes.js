@@ -1,7 +1,7 @@
 import express from "express"
 
 import { userAuth } from "../Utils/userAuth.js";
-import { allExpence, deleteExpence, newExpence, updateExpenceData, updateExpenceDone } from "../controller/expencecntt.js";
+import { allExpence, deleteExpence, newExpence, updateExpenceData, updateExpenceDone } from "../controller/expenceContt.js";
 
 
 
