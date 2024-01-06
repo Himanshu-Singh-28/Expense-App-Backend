@@ -50,7 +50,9 @@ export const userRegister=async(req,res,next)=>{
 
 export const userLongout=(req,res)=>{
     res.status(200).cookie("token","",{
-        maxAge:0
+        maxAge:0,
+        sameSite: process.env.NODE_ENV==="Development"?"lax":"none",
+        secure: process.env.NODE_ENV==="Development"?false: true,
     }).json({
         success:true,
         message: "Long out Successfully",
