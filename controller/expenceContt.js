@@ -3,12 +3,13 @@ import {Expence}  from "../Models/Expence.js";
 
 
 export const newExpence= async (req,res)=>{
-    let {title,amount,date}= req.body;
+    let {title,amount,date,type}= req.body;
     const expence= await Expence.create({
         title,
         amount,
         user: req.user,
         createdAT: date,
+        Type:type,
     });
     res.status(200).json({
         success : true,
@@ -62,7 +63,7 @@ export const updateExpenceDone=async(req,res)=>{
 
 export const updateExpenceData=async(req,res)=>{
     const ExpenceId=req.params.id;
-    let {title,amount}=req.body;
+    let {title,amount,type}=req.body;
     const userExp=await Expence.findById(ExpenceId);
     if(!userExp){
         return res.status(404).json({
@@ -72,9 +73,11 @@ export const updateExpenceData=async(req,res)=>{
     }
     if(!amount){
         userExp.title=title;
+        userExp.Type=type;
     }else{
         userExp.title=title;
         userExp.amount=amount;
+        userExp.Type=type;
     }
 
     await userExp.save();

@@ -21,6 +21,10 @@ const schema=mongoose.Schema({
     isCompleted:{
         type: Boolean,
         default: false
+    },
+    Type:{
+        type:String,
+        default:"Give"
     }
 });
 
