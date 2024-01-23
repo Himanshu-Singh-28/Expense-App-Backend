@@ -7,7 +7,7 @@ export const newExpence= async (req,res)=>{
     const expence= await Expence.create({
         title,
         amount,
-        user: req.user,
+        user: req.user._id,
         createdAT: date,
         Type:type,
     });
@@ -19,7 +19,7 @@ export const newExpence= async (req,res)=>{
 }
 
 export const allExpence=async (req,res)=>{
-    const expencedata=await Expence.find({user: req.user});
+    const expencedata=await Expence.find({user: req.user._id});
     res.json({
         success: true,
         data: expencedata,

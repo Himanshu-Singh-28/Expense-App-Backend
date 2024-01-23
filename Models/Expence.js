@@ -10,8 +10,7 @@ const schema=mongoose.Schema({
         required: true,
     },
     user:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "userData",
+        type: String,
         required: true,
     },
     createdAT:{
@@ -28,4 +27,4 @@ const schema=mongoose.Schema({
     }
 });
 
-export const Expence=mongoose.model("Taskdata",schema);
+export const Expence=mongoose.model("Expensedata",schema);
