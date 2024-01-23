@@ -47,9 +47,16 @@ app.get('/google/login',(req,res)=>{
     res.redirect('/api/v2/user/google/login');
 })
 app.get('/auth/google/callback', 
-passport.authenticate('google', { failureRedirect: 'http://localhost:5173' }),(req,res)=>{
-  res.redirect("https://to-do-app-react-delta.vercel.app/");}
+passport.authenticate('google', { failureRedirect: `${process.env.FRONTEND_URL}/login` }),(req,res)=>{
+  res.redirect(process.env.FRONTEND_URL);}
 );
+
+app.get('/fail',(req,res)=>{
+    res.json({
+        success:false,
+        message:"fali to login",
+    })
+})
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server is Running on port ${process.env.PORT}`);

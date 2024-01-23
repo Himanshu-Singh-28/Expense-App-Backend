@@ -7,8 +7,8 @@ const route=express.Router();
 
 route.post("/login",passport.authenticate('local',{failureRedirect:"/fail"}),(req,res)=>{
     res.json({
-        message:"sucess login",
-        user: req.user      
+        success:true,
+        message:"sucess login",      
     })
 });
 route.post("/register",userRegister);
