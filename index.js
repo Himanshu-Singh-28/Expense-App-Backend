@@ -28,13 +28,17 @@ app.use(cors({
 app.use(session({
     secret:process.env.JWT_SECRATE,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie:{
-        maxAge:15*60*60*1000,
-        sameSite: process.env.NODE_ENV==="Development"?"lax":"none",
-        secure: process.env.NODE_ENV==="Development"?false: true,
+        // sameSite: process.env.NODE_ENV==="Development"?"lax":"none",
+        // secure: process.env.NODE_ENV==="Development"?false: true,
+        sameSite:"none",
+        secure:true,
+        httpOnly: false,
+        maxAge:15*60*60*1000
     }
 }));
+app.set("trust proxy", 1);
 PassportInitialize(passport);
 app.use(passport.initialize());
 app.use(passport.session());
