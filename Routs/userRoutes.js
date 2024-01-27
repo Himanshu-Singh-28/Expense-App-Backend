@@ -5,12 +5,7 @@ import passport from "passport";
 
 const route=express.Router();
 
-route.post("/login",passport.authenticate('local',{failureRedirect:"/fail"}),(req,res)=>{
-    res.json({
-        success:true,
-        message:"sucess login",      
-    })
-});
+route.post("/login",userLogin);
 route.post("/register",userRegister);
 route.get("/logout",userLongout);
 route.get("/myprofil",userAuth,myProfil);

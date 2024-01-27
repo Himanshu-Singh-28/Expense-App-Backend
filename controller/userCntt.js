@@ -1,9 +1,9 @@
 import { User } from "../Models/User.js";
-// import { sendcookie } from "../Utils/sendcookies.js";
 import bcrypt from "bcrypt";
 import { nodecache } from "../index.js";
+import { sendcookie } from "../Utils/sendcookies.js";
 
-export const userLogin=async(req,res)=>{
+export const userLogin=async(req,res,next)=>{
     const {email,password}=req.body;
     let user;
     if(nodecache.has("user")){
@@ -28,8 +28,7 @@ export const userLogin=async(req,res)=>{
             message: "Invalid email or password",
         });
     }
-    // sendcookie(user._id,res,"Login Sucessfull",200);
-       
+    sendcookie(user,res,"Login successful",200);    
 }
 
 export const userRegister=async(req,res,next)=>{
