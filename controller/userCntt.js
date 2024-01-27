@@ -74,7 +74,6 @@ export const userLongout = (req, res) => {
   //         message: "Long out Successfully",
   //       });
   //   }
-  if (req.cookies) {
     res
       .status(200)
       .cookie("token", "", {
@@ -86,15 +85,7 @@ export const userLongout = (req, res) => {
         success: true,
         message: "Long out Successfully",
       });
-  } else {
-    req.logout((err) => {
-      if (err) console.log(err);
-    });
-    return res.status(200).json({
-      success: true,
-      message: " LogOut successfully",
-    });
-  }
+      req.logout((err)=>console.log(err));
 };
 
 export const myProfil = (req, res) => {
