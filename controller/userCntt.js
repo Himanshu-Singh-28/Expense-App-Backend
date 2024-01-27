@@ -53,15 +53,28 @@ export const userRegister = async (req, res, next) => {
 };
 
 export const userLongout = (req, res) => {
-  if (req.user.provider == "google") {
-    req.logout((err) => {
-      if (err) console.log(err);
-    });
-    return res.status(200).json({
-      success: true,
-      message: " LogOut successfully",
-    });
-  } else {
+  //   if (req.user.provider && req.user.provider == "google") {
+  //     req.logout((err) => {
+  //       if (err) console.log(err);
+  //     });
+  //     return res.status(200).json({
+  //       success: true,
+  //       message: " LogOut successfully",
+  //     });
+  //   } else {
+  //     res
+  //       .status(200)
+  //       .cookie("token", "", {
+  //         maxAge: 0,
+  //         sameSite: process.env.NODE_ENV === "Development" ? "lax" : "none",
+  //         secure: process.env.NODE_ENV === "Development" ? false : true,
+  //       })
+  //       .json({
+  //         success: true,
+  //         message: "Long out Successfully",
+  //       });
+  //   }
+  if (req.cookies) {
     res
       .status(200)
       .cookie("token", "", {
@@ -73,6 +86,14 @@ export const userLongout = (req, res) => {
         success: true,
         message: "Long out Successfully",
       });
+  } else {
+    req.logout((err) => {
+      if (err) console.log(err);
+    });
+    return res.status(200).json({
+      success: true,
+      message: " LogOut successfully",
+    });
   }
 };
 
