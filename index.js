@@ -38,7 +38,6 @@ app.use(session({
         maxAge:15*60*60*1000
     }
 }));
-app.set("trust proxy", 1);
 PassportInitialize(passport);
 app.use(passport.initialize());
 app.use(passport.session());
@@ -46,9 +45,6 @@ app.use(passport.session());
 app.use("/api/v2/user",userRouter);
 app.use("/api/v2/expence",expenceRoutes);
 
-app.get('/google/login',(req,res)=>{
-    res.redirect('/api/v2/user/google/login');
-})
 app.get('/auth/google/callback', 
 passport.authenticate('google', { failureRedirect: `${process.env.FRONTEND_URL}/login` }),(req,res)=>{
   res.redirect(process.env.FRONTEND_URL);}
