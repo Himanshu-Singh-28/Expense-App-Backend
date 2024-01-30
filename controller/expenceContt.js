@@ -19,7 +19,7 @@ export const newExpence= async (req,res)=>{
 }
 
 export const allExpence=async (req,res)=>{
-    const expencedata=await Expence.find({user: req.user._id});
+    const expencedata=await Expence.find({user: req.user._id}).sort({_id:-1});
     res.json({
         success: true,
         data: expencedata,
