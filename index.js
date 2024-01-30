@@ -30,10 +30,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie:{
-        sameSite: process.env.NODE_ENV==="Development"?"lax":"none",
-        secure: process.env.NODE_ENV==="Development"?false: true,
-        // sameSite:"none",
-        // secure:true,
+        // sameSite: process.env.NODE_ENV==="Development"?"lax":"none",
+        // secure: process.env.NODE_ENV==="Development"?false: true,
+        sameSite:"none",
+        secure:true,
         httpOnly: false,
         maxAge:15*60*60*1000
     }
