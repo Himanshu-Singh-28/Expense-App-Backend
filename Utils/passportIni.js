@@ -57,6 +57,7 @@ export const PassportInitialize = (passport) => {
         _id:user.id,
         name:user.displayName,
         email:user.emails[0].value,
+        profile:user.photos[0].value,
       }
       done(null,data);
     }else

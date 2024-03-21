@@ -8,7 +8,7 @@ const route=express.Router();
 route.post("/login",userLogin);
 route.post("/register",userRegister);
 route.get("/logout",userLongout);
-route.get("/myprofil",userAuth,myProfil);
+route.get("/myprofile",userAuth,myProfil);
 route.get('/google/login',passport.authenticate('google',{scope:['profile','email']}));
 
 
